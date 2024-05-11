@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
+\begin{document}
+\begin{table}[h]
+\centering
+\caption{Statistical tests for childhood exposure to innovation by patent category}
+\begin{tabular}{lSSSSSS}
+\toprule
+\begin{table}
+\caption{}
+\label{}
+\begin{center}
+\begin{tabular}{llllllll}
+\hline
+                 & inventor I & inventor II & inventor III & inventor IIII & inventor IIIII & inventor IIIIII & inventor IIIIIII  \\
+\hline
+const            & 0.0012***  & 0.0008***   & 0.0009***    & 0.0010***     & 0.0013***      & 0.0009***       & 0.0013***         \\
+                 & (0.0001)   & (0.0000)    & (0.0000)     & (0.0000)      & (0.0000)       & (0.0001)        & (0.0001)          \\
+inventor\_cat\_1 & 5.4073***  &             &              &               &                &                 &                   \\
+                 & (0.2411)   &             &              &               &                &                 &                   \\
+inventor\_cat\_2 &            & 2.1777***   &              &               &                &                 &                   \\
+                 &            & (0.0555)    &              &               &                &                 &                   \\
+inventor\_cat\_3 &            &             & 3.8272***    &               &                &                 &                   \\
+                 &            &             & (0.1104)     &               &                &                 &                   \\
+inventor\_cat\_4 &            &             &              & 4.5655***     &                &                 &                   \\
+                 &            &             &              & (0.1393)      &                &                 &                   \\
+inventor\_cat\_5 &            &             &              &               & 3.5113***      &                 &                   \\
+                 &            &             &              &               & (0.1461)       &                 &                   \\
+inventor\_cat\_6 &            &             &              &               &                & 3.6002***       &                   \\
+                 &            &             &              &               &                & (0.1408)        &                   \\
+inventor\_cat\_7 &            &             &              &               &                &                 & 5.9979***         \\
+                 &            &             &              &               &                &                 & (0.3078)          \\
+R-squared        & 0.4113     & 0.6813      & 0.6253       & 0.5987        & 0.4451         & 0.4760          & 0.3454            \\
+R-squared Adj.   & 0.4105     & 0.6808      & 0.6248       & 0.5981        & 0.4443         & 0.4753          & 0.3444            \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\bigskip
+Standard errors in parentheses. \newline 
+* p<.1, ** p<.05, ***p<.01\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Statistical tests for childhood exposure to innovation by gender}
+\begin{tabular}{lSSSSSS}
+\toprule
+\begin{table}
+\caption{}
+\label{}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+               & inventor\_g\_m & inventor\_g\_f  \\
+\hline
+const          & 0.0000***      & -0.0000***      \\
+               & (0.0000)       & (0.0000)        \\
+inventor\_g\_m & 1.0000***      &                 \\
+               & (0.0000)       &                 \\
+inventor\_g\_f &                & 1.0000***       \\
+               &                & (0.0000)        \\
+R-squared      & 1.0000         & 1.0000          \\
+R-squared Adj. & 1.0000         & 1.0000          \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\bigskip
+Standard errors in parentheses. \newline 
+* p<.1, ** p<.05, ***p<.01\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Statistical tests for childhood exposure to innovation by parental income quintile}
+\begin{tabular}{lSSSSSS}
+\toprule
+\begin{table}
+\caption{}
+\label{}
+\begin{center}
+\begin{tabular}{llllll}
+\hline
+                & inventor\_pq\_1 & inventor\_pq\_2 & inventor\_pq\_3 & inventor\_pq\_4 & inventor\_pq\_5  \\
+\hline
+const           & -0.0000***      & 0.0000***       & -0.0000***      & -0.0000***      & -0.0000***       \\
+                & (0.0000)        & (0.0000)        & (0.0000)        & (0.0000)        & (0.0000)         \\
+inventor\_pq\_1 & 1.0000***       &                 &                 &                 &                  \\
+                & (0.0000)        &                 &                 &                 &                  \\
+inventor\_pq\_2 &                 & 1.0000***       &                 &                 &                  \\
+                &                 & (0.0000)        &                 &                 &                  \\
+inventor\_pq\_3 &                 &                 & 1.0000***       &                 &                  \\
+                &                 &                 & (0.0000)        &                 &                  \\
+inventor\_pq\_4 &                 &                 &                 & 1.0000***       &                  \\
+                &                 &                 &                 & (0.0000)        &                  \\
+inventor\_pq\_5 &                 &                 &                 &                 & 1.0000***        \\
+                &                 &                 &                 &                 & (0.0000)         \\
+R-squared       & 1.0000          & 1.0000          & 1.0000          & 1.0000          & 1.0000           \\
+R-squared Adj.  & 1.0000          & 1.0000          & 1.0000          & 1.0000          & 1.0000           \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\bigskip
+Standard errors in parentheses. \newline 
+* p<.1, ** p<.05, ***p<.01\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Statistical tests for college-level innovation rates by parental income quintile}
+\begin{tabular}{lSSSSSS}
+\toprule
+\begin{table}
+\caption{}
+\label{}
+\begin{center}
+\begin{tabular}{llllll}
+\hline
+               & inventor I & inventor II & inventor III & inventor IIII & inventor IIIII  \\
+\hline
+const          & -0.0000    & -0.0000     & -0.0000      & -0.0000       & -0.0000         \\
+               & (0.0000)   & (0.0000)    & (0.0000)     & (0.0000)      & (0.0000)        \\
+inventor       & 1.0000***  & 1.0000***   & 1.0000***    & 1.0000***     & 1.0000***       \\
+               & (0.0000)   & (0.0000)    & (0.0000)     & (0.0000)      & (0.0000)        \\
+R-squared      & 1.0000     & 1.0000      & 1.0000       & 1.0000        & 1.0000          \\
+R-squared Adj. & 1.0000     & 1.0000      & 1.0000       & 1.0000        & 1.0000          \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\bigskip
+Standard errors in parentheses. \newline 
+* p<.1, ** p<.05, ***p<.01\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
