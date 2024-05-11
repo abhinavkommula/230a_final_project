@@ -1,73 +1,51 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import statsmodels.formula.api as smf
-
-# Load data tables
-table1 = pd.read_csv('./code_and_data/data/excel/table_1a.csv')
-table3 = pd.read_csv('./code_and_data/data/excel/table_3.csv') 
-table4a = pd.read_csv('./code_and_data/data/excel/table_4a.csv')
-table4b = pd.read_csv('./code_and_data/data/excel/table_4b.csv')
-
-# Analysis using Table 1
-plt.figure()
-table1.groupby('par_stateabbrv')[['inventor', 'top5cit']].mean().plot.bar()
-plt.title('Innovation Rates by State')
-
-plt.figure()
-table1[['inventor_g_m', 'inventor_g_f']].mean().plot.bar()
-plt.title('Innovation Rates by Gender')
-
-plt.figure()
-table1[['inventor_pq_1', 'inventor_pq_2', 'inventor_pq_3', 'inventor_pq_4', 'inventor_pq_5']].mean().plot.bar()
-plt.title('Innovation Rates by Parental Income Quintile')
-
-# Analysis using Table 3
-plt.figure()
-table3.groupby('instnm')[['inventor', 'top5cit']].mean().plot.bar(figsize=(10,5))
-plt.title('Innovation Rates by College')
-
-plt.figure()
-table3[['inventor_pq1', 'inventor_pq2', 'inventor_pq3', 'inventor_pq4', 'inventor_pq5']].mean().plot.bar()
-plt.title('Innovation Rates by Parental Income Quintile (College)')
-
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Set matplotlib parameters for prettier charts
-plt.rcParams['figure.figsize'] = (10, 6)
-plt.rcParams['font.size'] = 14
-sns.set_style("whitegrid")
+# Load data from Table 1a and Table 1b
+table1a = pd.read_csv('./code_and_data/data/excel/table_1a.csv')
+table1b = pd.read_csv('./code_and_data/data/excel/table_1b.csv')
 
-# Extract data by gender from Table 1a
-gender_data = table1[['inventor_g_m', 'inventor_g_f', 'top5cit_g_m', 'top5cit_g_f']]
-gender_data = gender_data.rename(columns={'inventor_g_m': 'inventor_male', 'inventor_g_f': 'inventor_female',
-                                          'top5cit_g_m': 'top5cit_male', 'top5cit_g_f': 'top5cit_female'})
+# Experiment with Table 1a (Commuting Zones)
+# Extract relevant columns
+table1a_low_income = table1a[['par_czname', 'inventor_pq_1', 'top5cit_pq_1']]
 
-# Calculate summary statistics for innovation rates by gender
-gender_summary = gender_data.describe()
-print("Summary Statistics for Innovation Rates by Gender:")
-print(gender_summary)
-
-# Visualize innovation rates by gender
-gender_data.plot(kind='bar', rot=0)
-plt.title('Innovation Rates by Gender')
-plt.xlabel('Gender')
-plt.ylabel('Rate')
+# Bar chart for inventor_pq_1 by commuting zone
+plt.figure(figsize=(12, 6))
+table1a_low_income.sort_values(by='inventor_pq_1', ascending=False, inplace=True)
+sns.barplot(x='par_czname', y='inventor_pq_1', data=table1a_low_income.head(20))
+plt.xticks(rotation=90)
+plt.title('Top 20 Commuting Zones by Share of Inventors among Low-Income Children')
+plt.tight_layout()
 plt.show()
 
-# Extract data by parent income quintile from Table 1a
-income_data = table1[[col for col in table1.columns if col.startswith('inventor_pq_') or col.startswith('top5cit_pq_')]]
+# Bar chart for top5cit_pq_1 by commuting zone
+plt.figure(figsize=(12, 6))
+table1a_low_income.sort_values(by='top5cit_pq_1', ascending=False, inplace=True)
+sns.barplot(x='par_czname', y='top5cit_pq_1', data=table1a_low_income.head(20))
+plt.xticks(rotation=90)
+plt.title('Top 20 Commuting Zones by Share of Top 5% Cited Inventors among Low-Income Children')
+plt.tight_layout()
+plt.show()
 
-# Calculate summary statistics for innovation rates by parent income quintile
-income_summary = income_data.describe()
-print("\nSummary Statistics for Innovation Rates by Parent Income Quintile:")
-print(income_summary)
+# Experiment with Table 1b (States)
+# Extract relevant columns
+table1b_low_income = table1b[['par_stateabbrv', 'inventor_pq_1', 'top5cit_pq_1']]
 
-# Visualize innovation rates by parent income quintile
-income_data.plot(kind='bar', rot=0)
-plt.title('Innovation Rates by Parent Income Quintile')
-plt.xlabel('Parent Income Quintile')
-plt.ylabel('Rate')
+# Bar chart for inventor_pq_1 by state
+plt.figure(figsize=(8, 6))
+table1b_low_income.sort_values(by='inventor_pq_1', ascending=False, inplace=True)
+sns.barplot(x='par_stateabbrv', y='inventor_pq_1', data=table1b_low_income)
+plt.xticks(rotation=90)
+plt.title('Share of Inventors among Low-Income Children by State')
+plt.tight_layout()
+plt.show()
+
+# Bar chart for top5cit_pq_1 by state
+plt.figure(figsize=(8, 6))
+table1b_low_income.sort_values(by='top5cit_pq_1', ascending=False, inplace=True)
+sns.barplot(x='par_stateabbrv', y='top5cit_pq_1', data=table1b_low_income)
+plt.xticks(rotation=90)
+plt.title('Share of Top 5% Cited Inventors among Low-Income Children by State')
+plt.tight_layout()
 plt.show()
